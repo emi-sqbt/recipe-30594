@@ -1,0 +1,13 @@
+<%= form_with model: @recipe, url:recipes_path, local: true do |f| %>
+  <div class="recipe-box">
+    レシピを投稿する
+    <%= f.text_field :mane, class:"neme", placeholder:"レシピ名" %>
+    <%= f.file_field :image, id:"item-image" %>
+    <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box"}) %>
+    <%= f.collection_select(:cooking_method_id, CookingMethod.all, :id, :name, {}, {class:"select-box"}) %>
+    <%= f.collection_select(:season_id, Season.all, :id, :name, {}, {class:"select-box"}) %>
+    <%= f.text_area :foodstuff, class:"foodstuff", placeholder:"食材" %>
+    <%= f.text_area :process, class:"process", placeholder:"作り方" %>
+    <%= f.submit "投稿する" ,class:"btn" %>
+  </div>
+<% end %>

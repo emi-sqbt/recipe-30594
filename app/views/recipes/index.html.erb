@@ -1,0 +1,25 @@
+<div class="header">
+  <div class="inner-header">
+    <h1 class="title">
+     レシピ管理
+    </h1>
+    <li class='new-post'>
+      <%= link_to "New Post",new_recipe_path, class:"post-btn"%>
+    </li>
+  </div>
+</div>
+
+<div class='main'>
+<% @recipes.each do |recipe| %>
+  <div class="recipe">
+    <div class="recipe-name">
+      <%= article.name %>
+    </div>
+    <div class="article-image">
+      <%= article.image %>
+    </div>
+  </div>
+<% end %>
+
+
+</div>
