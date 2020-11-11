@@ -14,10 +14,10 @@
   <div class="recipe">
     <%= link_to recipes_path(recipe.id), method: :get do %>
     <div class="recipe-name">
-      <%= link_to recipe.name, recipes_path(recipe)%>
+      <%= link_to recipe.name, recipe_path(recipe)%>
     </div>
     <div class="recipe-image-comtent">
-      <%=link_to image_tag(recipe.image, class: "recipe-image"), recipes_path(recipe)%>
+      <%=link_to image_tag(recipe.image, class: "recipe-image"), recipe_path(recipe)%>
     </div>
   </div>
   <% end %>

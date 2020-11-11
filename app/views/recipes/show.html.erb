@@ -1,0 +1,32 @@
+<div class="recipe-show">
+  <div class="recipe-box">
+    <h2 class="name">
+      <%= @recipe.name %>
+    </h2>
+    <div class="recipe-img-content">
+      <%= image_tag @recipe.image, class:"recipe-box-img"%>
+    </div>
+    <div class="recipe-item-box">
+    <table class="detail-table">
+      <tbody>
+        <tr>
+          <th class="de%tail-item">カテゴリー</th>
+          <td class="detail-value"><%= @recipe.category.name %></td>
+        </tr>
+        <tr>
+          <th class="detail-item">調理方法</th>
+          <td class="detail-value"><%= @recipe.cooking_method.name%></td>
+        </tr>
+        <tr>
+          <th class="detail-item">季節</th>
+          <td class="detail-value"><%= @recipe.season.name%></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <h3 class="foodstuff">食材</h3>
+      <%= @recipe.foodstuff%>
+    <h3 class="process">作り方</h3>
+      <%= @recipe.process%>
+  </div>
+</div>
