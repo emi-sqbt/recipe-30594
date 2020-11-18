@@ -29,4 +29,7 @@
     <h3 class="process">作り方</h3>
       <%= @recipe.process%>
   </div>
+  <%= link_to 'レシピの編集', edit_recipe_path(@recipe.id), method: :get, class: "recipe-red-btn" %>
+  <%= link_to '削除', recipe_path(@recipe.id), method: :delete, class:'recipe-destroy' %>
+  <%= link_to 'トップページへ戻る', root_path %>
 </div>

@@ -2,6 +2,8 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all.order("created_at DESC")
+    @q = Recipe.ransack(params[:q])
+
   end
 
   def new
@@ -20,6 +22,33 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
   end
+
+  def edit
+    @recipe = Recipe.find(params[:id])
+  end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update(recipe_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
+
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+    redirect_to root_path
+  end
+
+  def search
+    @q = Recipe.ransack(params[:q])
+    @results = @q.result
+  
+  end
+
 
   private
 
