@@ -7,9 +7,9 @@
     <br>
     <li>
       <%= result.name %>
-      <%= result.category_id %>
-      <%= result.cooking_method_id %>
-      <%= result.season_id %>
+      <%= result.category.name %>
+      <%= result.cooking_method.name %>
+      <%= result.season.name %>
     </li>
   <% end %>
 <% else %>

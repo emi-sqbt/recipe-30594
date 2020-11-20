@@ -1,8 +1,13 @@
 class RecipesController < ApplicationController
+  before_action :set_recipe, only: [:edit, :show, :update, :destroy]
 
   def index
     @recipes = Recipe.all.order("created_at DESC")
     @q = Recipe.ransack(params[:q])
+    @categories = Category.all 
+    @cookingmethodes = CookingMethod.all
+    @season = Season.all
+    @results = @q. result(distinct: true)
 
   end
 
@@ -20,15 +25,12 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
   end
 
   def edit
-    @recipe = Recipe.find(params[:id])
   end
 
   def update
-    @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
       redirect_to root_path
     else
@@ -38,14 +40,14 @@ class RecipesController < ApplicationController
 
 
   def destroy
-    @recipe = Recipe.find(params[:id])
     @recipe.destroy
     redirect_to root_path
   end
 
   def search
-    @q = Recipe.ransack(params[:q])
-    @results = @q.result
+   
+    @q = Recipe.search(search_params)
+    @results = @q.result(distinct: true)
   
   end
 
@@ -54,7 +56,13 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:name, :category_id, :cooking_method_id, :season_id, :foodstuff, :process, :image)
-    
   end
 
+  def set_recipe
+    @recipe = Recipe.find(params[:id])
+  end
+
+  def search_params
+    params.require(:q).permit(:name_cont, :category_id_eq, :cooking_method_id_eq, :season_id_eq)
+  end
 end
