@@ -3,7 +3,7 @@
 </div>
 
 <div class="search-post">
-  <%= search_form_for @q, url: search_recipes_path do |f| %>
+  <%= search_form_for @q, url: recipes_search_path(:id) do |f| %>
   <%= f.label :name_cont, "レシピ名"%>
   <%= f.search_field :name_cont%>
   <%= f.label :category_id_eq, "カテゴリー"%>
@@ -16,6 +16,8 @@
   <div class="actions"><%= f.submit "検索" %></div>
   <% end %>
 </div>
+
+
 
 
 <div class='main'>
